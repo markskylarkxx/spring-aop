@@ -1,0 +1,22 @@
+spring:
+  jmx:
+    enabled: false
+  data:
+    redis:
+      port: 6379
+      host: localhost
+
+server:
+  port: 5000
+
+config: classpath:logback-spring.xml
+logging:
+  file:
+    name: logs/myapp.log
+admin:
+  name: Kenechukwu Mark
+  email: kenechukwubanego@gmail.com
+
+
+
+

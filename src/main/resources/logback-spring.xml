@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Define my custom appender -->
+    <appender name="REDIS" class="com.kceecodes.springaop.appender.RedisAppender">
+        <redisHost>localhost</redisHost>
+        <redisPort>6379</redisPort>
+        <redisKey>application-logs</redisKey>
+    </appender>
+
+    <!-- Define a console appender for logging to the console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+<!--    Define an email appender-->
+    <Appender name="Email" class="ch.qos.logback.classic.net.SMTPAppender" >
+
+        <smtpHost>smtp.gmail.com</smtpHost>
+        <smtpPort>465</smtpPort> <!-- Use the appropriate port -->
+        <smtpUsername>markskylarkxx@gmail.com</smtpUsername>
+        <smtpPassword>hvxfrnolwqzwgrmn</smtpPassword>
+        <asynchronousSending>true</asynchronousSending> <!-- Use asynchronous sending if needed -->
+        <STARTTLS>true</STARTTLS>
+        <SSL>false</SSL>
+        <from>markskylarkxx@gmail.com</from>
+        <to>kenechukwubanego@gmail.com</to>
+        <subject>Logback Email Notification</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout" />
+
+    </Appender>
+
+<!--    Define the rolling file appender-->
+    <appender name="TIME_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/myapp.log</file> <!-- Base log file name -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/myapp-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Log file pattern -->
+            <maxHistory>30</maxHistory> <!-- Maximum number of archived log files -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define a logger for WARN level messages -->
+    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="TRACE">
+        <appender-ref ref="TIME_ROLLING" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="WARN">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="com.kceecodes.springaop.aspect.EmailNotificationAspect" level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="Email"/>
+        <appender-ref ref="TIME_ROLLING"/>
+    </logger>
+
+
+
+
+    <!-- Root logger configuration -->
+    <root level="WARN">
+                <appender-ref ref="REDIS" />
+<!--                <appender-ref ref="CONSOLE" />-->
+<!--                <appender-ref ref="Email"/>-->
+                 Define the root logger and associate it with the appender
+<!--                <appender-ref ref="TIME_ROLLING" />-->
+
+
+    </root>
+
+
+
+
+</configuration>
