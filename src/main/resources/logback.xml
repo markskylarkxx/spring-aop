@@ -47,22 +47,20 @@
     </appender>
 
     <!-- Define a logger for WARN level messages -->
-    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="TRACE">
-        <appender-ref ref="TIME_ROLLING" />
-        <appender-ref ref="CONSOLE" />
-    </logger>
+<!--    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="TRACE">-->
+<!--        <appender-ref ref="TIME_ROLLING" />-->
+<!--        <appender-ref ref="CONSOLE" />-->
+<!--    </logger>-->
 
-    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="WARN">
-        <appender-ref ref="CONSOLE" />
-    </logger>
+<!--    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="WARN">-->
+<!--        <appender-ref ref="CONSOLE" />-->
+<!--    </logger>-->
 
-    <logger name="com.kceecodes.springaop.aspect.EmailNotificationAspect" level="INFO">
+    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="INFO">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="Email"/>
         <appender-ref ref="TIME_ROLLING"/>
     </logger>
-
-
 
 
     <!-- Root logger configuration -->
@@ -72,11 +70,6 @@
 <!--                <appender-ref ref="Email"/>-->
                  Define the root logger and associate it with the appender
 <!--                <appender-ref ref="TIME_ROLLING" />-->
-
-
     </root>
-
-
-
 
 </configuration>

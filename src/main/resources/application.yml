@@ -7,9 +7,9 @@ spring:
       host: localhost
 
 server:
-  port: 5000
+  port: 1000
 
-config: classpath:logback-spring.xml
+config: classpath:logback.xml
 logging:
   file:
     name: logs/myapp.log

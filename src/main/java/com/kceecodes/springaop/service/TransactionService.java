@@ -27,8 +27,8 @@ public class TransactionService {
     @EventListener(ApplicationReadyEvent.class)
     public  void initializeCustomerMap(){
 
-        customerMap.put("customer1", new Customer("customer1", 100.0));
-        customerMap.put("customer2", new Customer("customer2", 50.0));
+        customerMap.put("customer1", new Customer("customer1", 1000.0));
+        customerMap.put("customer2", new Customer("customer2", 5000.0));
 
     }
 
@@ -57,6 +57,23 @@ public class TransactionService {
     }
 
     // withdraw
+//    public void withdraw(Transaction transaction) {
+//        String customerId = transaction.getCustomerId();
+//        Customer customer = customerMap.get(customerId);
+//        if (customer != null) {
+//            double currentBalance = customer.getBalance();
+//            double amount = transaction.getAmount();
+//            if (currentBalance >= amount) {
+//                customer.setBalance(currentBalance - amount);
+//                // logTransaction("Withdraw", customerId, amount, currentBalance - amount);
+//                saveTransactionToHistory(customerId, transaction);
+//            } else {
+//
+//                throw new InsufficientBalanceException("Insufficient balance, cannot process withdrawal");
+//            }
+//        }
+//    }
+
     public void withdraw(Transaction transaction) {
         String customerId = transaction.getCustomerId();
         Customer customer = customerMap.get(customerId);
@@ -68,11 +85,11 @@ public class TransactionService {
                 // logTransaction("Withdraw", customerId, amount, currentBalance - amount);
                 saveTransactionToHistory(customerId, transaction);
             } else {
-
-                throw new InsufficientBalanceException("Insufficient balance");
+                throw new InsufficientBalanceException("Insufficient balance, cannot process withdrawal");
             }
         }
     }
+
 
 
     public double checkBalance(String customerId) {
@@ -96,5 +113,10 @@ public class TransactionService {
         return new ArrayList<>(customerMap.values());
 
 
+    }
+
+    public  void getTransHistory(Transaction transaction){
+        String customerId = transaction.getCustomerId() ;
+       this.saveTransactionToHistory(customerId, transaction);
     }
 }

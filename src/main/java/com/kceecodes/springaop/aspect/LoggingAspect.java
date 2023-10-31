@@ -27,9 +27,12 @@ public class LoggingAspect {
 
 
 
-    @Before("execution(* com.kceecodes.springaop.service.TransactionService.*(..))")
+    @Before("execution(* com.kceecodes.springaop.service.TransactionService.withdraw(..))")
     public static void before(JoinPoint joinPoint) {
         System.out.println("Before advice: Code to run before the target method");
+
+         String methodName = joinPoint.getSignature().getName();
+        System.out.println("Method name::: " + methodName);
 
 
 
@@ -43,18 +46,18 @@ public class LoggingAspect {
           String uniqueKey = UniqueKeyGenerator.generateUniqueKey();
           redisTemplate.opsForList().leftPush(uniqueKey, "withdrawal successful");
            // todo;   log to console and file;
-        logger.info(uniqueKey, "withdrawal successful!");
+       // logger.info("<><><><> " + uniqueKey, "withdrawal successful!");
     }
 
 
 
-    @AfterReturning(pointcut = "execution(* com.kceecodes.springaop.service.*.*(..))",
+    @AfterReturning(pointcut = "execution(* com.kceecodes.springaop.service.TransactionService.withdraw(..))",
             returning = "returnValue")
     public void afterReturningMethod(Object returnValue) {
         System.out.println("After Returning advice: Code to run after the target method successfully returns");
 
-                 logger.info("withdraw successful");
-                 logger.warn("successful withdrawal");
+               //  logger.info("withdraw successful......................................");
+                // logger.warn("successful withdrawal");
     }
 
 
@@ -64,7 +67,7 @@ public class LoggingAspect {
     public void afterThrowingMethod(JoinPoint joinPoint, Throwable exception) {
 
                //todo; this logs the exception generated to the console and file appender
-        logger.info("Exception caught: " + exception.getMessage());
+      //  logger.info("Exception caught: " + exception.getMessage());
 
         System.out.println("Exception caught: " + exception.getMessage());
 

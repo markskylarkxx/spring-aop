@@ -4,7 +4,6 @@ package com.kceecodes.springaop.controller;
 import com.kceecodes.springaop.model.Customer;
 import com.kceecodes.springaop.model.Transaction;
 import com.kceecodes.springaop.service.TransactionService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +44,8 @@ public class TransactionController {
         List<Customer> allCustomers =   service.getCustomers();
         return  new ResponseEntity<>(allCustomers, HttpStatus.OK);
     }
+
+
 
 
 
