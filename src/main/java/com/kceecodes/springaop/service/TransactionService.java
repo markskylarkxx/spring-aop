@@ -56,23 +56,6 @@ public class TransactionService {
         saveTransactionToHistory(customerId, transaction);
     }
 
-    // withdraw
-//    public void withdraw(Transaction transaction) {
-//        String customerId = transaction.getCustomerId();
-//        Customer customer = customerMap.get(customerId);
-//        if (customer != null) {
-//            double currentBalance = customer.getBalance();
-//            double amount = transaction.getAmount();
-//            if (currentBalance >= amount) {
-//                customer.setBalance(currentBalance - amount);
-//                // logTransaction("Withdraw", customerId, amount, currentBalance - amount);
-//                saveTransactionToHistory(customerId, transaction);
-//            } else {
-//
-//                throw new InsufficientBalanceException("Insufficient balance, cannot process withdrawal");
-//            }
-//        }
-//    }
 
     public void withdraw(Transaction transaction) {
         String customerId = transaction.getCustomerId();

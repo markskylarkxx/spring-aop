@@ -11,24 +11,24 @@ import java.util.Properties;
 @Configuration
 public class EmailConfig {
 
-    @Bean
-    public JavaMailSender javaMailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(465);
-        mailSender.setUsername("markskylarkxx@gmail.com");
-        mailSender.setPassword("hvxfrnolwqzwgrmn");
-
-
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.enable", true);
-        props.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
-
-
-        // Additional properties and configuration
-
-        return mailSender;
-    }
+//    @Bean
+//    public JavaMailSender javaMailSender() {
+//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//        mailSender.setHost("smtp.gmail.com");
+//        mailSender.setPort(465);
+//        mailSender.setUsername("markskylarkxx@gmail.com");
+//        mailSender.setPassword("hvxfrnolwqzwgrmn");
+//
+//
+//        Properties props = mailSender.getJavaMailProperties();
+//        props.put("mail.transport.protocol", "smtp");
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.ssl.enable", true);
+//        props.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
+//
+//
+//        // Additional properties and configuration
+//
+//        return mailSender;
+//    }
 }

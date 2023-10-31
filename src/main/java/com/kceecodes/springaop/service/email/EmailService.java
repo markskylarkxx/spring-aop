@@ -14,10 +14,11 @@ public class EmailService {
 
     private  static  Logger logger = LoggerFactory.getLogger(EmailService.class);
     @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
-
-
+    public EmailService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     public void sendEmail(String to, String subject, String body){
 

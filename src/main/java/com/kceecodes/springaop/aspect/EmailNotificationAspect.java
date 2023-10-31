@@ -30,8 +30,8 @@ public class EmailNotificationAspect {
     public  void sendEmailNotification( JoinPoint point, Object result) {
 
           //todo; call the sendEmail fxn to send  a notification email to the admin
-       // service.sendEmail(adminEmail, "Transaction Notification", "The transaction was successful.");
-       // logger.info("Email notification sent to: " + admin);
+       service.sendEmail(adminEmail, "Transaction Notification", "The transaction was successful.");
+       logger.info("Email notification sent to: " + admin);
 
     }
 }

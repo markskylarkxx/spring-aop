@@ -12,9 +12,15 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+<!--        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - Tomcat started on port %property{server.port}%n</pattern>-->
         </encoder>
     </appender>
 
+<!--    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - Tomcat started on port %property{server.port}%n</pattern>-->
+<!--        </encoder>`-->
+<!--    </appender>-->
 
 <!--    Define an email appender-->
     <Appender name="Email" class="ch.qos.logback.classic.net.SMTPAppender" >
@@ -47,14 +53,14 @@
     </appender>
 
     <!-- Define a logger for WARN level messages -->
-<!--    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="TRACE">-->
-<!--        <appender-ref ref="TIME_ROLLING" />-->
-<!--        <appender-ref ref="CONSOLE" />-->
-<!--    </logger>-->
+    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="TRACE">
+        <appender-ref ref="TIME_ROLLING" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
 
-<!--    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="WARN">-->
-<!--        <appender-ref ref="CONSOLE" />-->
-<!--    </logger>-->
+    <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="WARN">
+        <appender-ref ref="CONSOLE" />
+    </logger>
 
     <logger name="com.kceecodes.springaop.aspect.LoggingAspect" level="INFO">
         <appender-ref ref="CONSOLE" />
@@ -64,9 +70,9 @@
 
 
     <!-- Root logger configuration -->
-    <root level="WARN">
+    <root level="INFO">
                 <appender-ref ref="REDIS" />
-<!--                <appender-ref ref="CONSOLE" />-->
+                <appender-ref ref="CONSOLE" />
 <!--                <appender-ref ref="Email"/>-->
                  Define the root logger and associate it with the appender
 <!--                <appender-ref ref="TIME_ROLLING" />-->

@@ -1,4 +1,16 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: markskylarkxx@gmail.com
+    password: hvxfrnolwqzwgrmn
+    properties:
+      mail.transport.protocol: smtp
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.starttls.enable: true
+
+
   jmx:
     enabled: false
   data:
@@ -6,8 +18,14 @@ spring:
       port: 6379
       host: localhost
 
+
+
+
+
 server:
-  port: 1000
+  port: 2500
+
+
 
 config: classpath:logback.xml
 logging:
@@ -16,6 +34,7 @@ logging:
 admin:
   name: Kenechukwu Mark
   email: kenechukwubanego@gmail.com
+
 
 
 
